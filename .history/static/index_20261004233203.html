@@ -41,7 +41,7 @@
         class="flex items-center gap-2 sm:gap-3 cursor-pointer"
         onclick="goToProfiles()"
       >
-        <span class="text-2xl sm:text-3xl">🏝️️</span>
+        <span class="text-2xl sm:text-3xl">🏝️</span>
         <div>
           <h1
             class="text-lg sm:text-xl font-bold tracking-wide bg-gradient-to-r from-yellow-300 via-pink-300 to-teal-300 bg-clip-text text-transparent"
@@ -533,41 +533,53 @@
       }
 
       function renderFullBodyAvatar(
-        containerClass = "w-40 h-56 sm:w-48 sm:h-64",
+        containerClass = "w-36 h-48 sm:w-44 sm:h-56",
       ) {
+        const outfitId = state.profile.avatar_config?.outfit;
         const petId = state.profile.avatar_config?.pet;
-        const outfitEmoji = getEquippedEmoji("outfit");
+
+        let bodyHtml = `<div class="text-6xl sm:text-7xl select-none z-10 transition-transform">${getBaseAvatar()}</div>`;
+        if (outfitId === "outfit_hero") {
+          bodyHtml = `
+                    <div class="relative flex flex-col items-center">
+                        <div class="text-5xl sm:text-6xl select-none z-10">${getBaseAvatar()}</div>
+                        <div class="text-3xl sm:text-4xl -mt-3 z-15 drop-shadow-lg" title="Superhero Cape">🦸‍♂️</div>
+                    </div>
+                `;
+        } else if (outfitId === "outfit_dino") {
+          bodyHtml = `
+                    <div class="relative flex flex-col items-center">
+                        <div class="text-5xl sm:text-6xl select-none z-10">${getBaseAvatar()}</div>
+                        <div class="text-3xl sm:text-4xl -mt-3 z-15 drop-shadow-lg" title="Dinosaur Onesie">🦖</div>
+                    </div>
+                `;
+        }
+
+        let petHtml = "";
+        if (petId === "pet_bunny") {
+          petHtml = `<div class="absolute -bottom-2 -left-6 text-3xl sm:text-4xl z-30 drop-shadow-lg animate-bounce" title="Hoppy Bunny">🐰</div>`;
+        } else if (petId === "pet_dragon") {
+          petHtml = `<div class="absolute -bottom-2 -right-6 text-3xl sm:text-4xl z-30 drop-shadow-lg animate-pulse" title="Mini Dragon">🐉</div>`;
+        }
 
         return `
-                <div class="${containerClass} bg-gradient-to-b from-indigo-900 via-purple-900 to-slate-900 rounded-3xl flex flex-col items-center justify-between p-4 shadow-2xl border-4 border-white/30 relative overflow-visible">
-                    <!-- Top Hat Slot -->
-                    <div class="h-10 flex items-center justify-center text-4xl sm:text-5xl z-30 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                        ${getEquippedEmoji("hat")}
+                <div class="${containerClass} bg-gradient-to-b from-amber-400 via-pink-500 to-purple-600 rounded-3xl flex flex-col items-center justify-center shadow-2xl border-4 border-white/40 relative overflow-visible p-4">
+                    <!-- Hat Zone -->
+                    <div class="absolute top-2 left-1/2 -translate-x-1/2 text-3xl sm:text-4xl z-30 drop-shadow-md">${getEquippedEmoji("hat")}</div>
+                    
+                    <!-- Glasses Zone -->
+                    <div class="absolute top-16 sm:top-20 left-1/2 -translate-x-1/2 text-2xl sm:text-3xl z-30 drop-shadow-md">${getEquippedEmoji("glasses")}</div>
+                    
+                    <!-- Head & Body Zone -->
+                    <div class="mt-4 flex flex-col items-center justify-center">
+                        ${bodyHtml}
                     </div>
 
-                    <!-- Head & Glasses Center Zone -->
-                    <div class="relative flex flex-col items-center justify-center my-auto">
-                        <div class="text-6xl sm:text-7xl select-none z-10 filter drop-shadow-md">${getBaseAvatar()}</div>
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-3xl z-20 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-                            ${getEquippedEmoji("glasses")}
-                        </div>
-                    </div>
+                    <!-- Feet / Ground Shadow -->
+                    <div class="w-20 h-3 bg-black/30 rounded-full blur-[2px] mt-2"></div>
 
-                    <!-- Torso / Outfit Zone -->
-                    <div class="h-12 flex items-center justify-center text-3xl sm:text-4xl z-20 drop-shadow-md bg-white/10 backdrop-blur-sm px-4 py-1 rounded-2xl border border-white/20">
-                        ${outfitEmoji || '<span class="text-[10px] text-white/40 font-semibold tracking-wider">NO OUTFIT</span>'}
-                    </div>
-
-                    <!-- Pet Companion Corner Badge -->
-                    ${
-                      petId
-                        ? `
-                        <div class="absolute -bottom-2 -right-2 text-3xl sm:text-4xl z-40 drop-shadow-lg bg-black/60 backdrop-blur-md rounded-2xl p-1.5 border border-white/30 animate-bounce">
-                            ${getEquippedEmoji("pet")}
-                        </div>
-                    `
-                        : ""
-                    }
+                    <!-- Pet Companion Zone -->
+                    ${petHtml}
                 </div>
             `;
       }
@@ -585,7 +597,7 @@
                         <button onclick="goToProfiles()" class="bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-xl text-xs font-bold">👤 Switch</button>
                     </div>
 
-                    <!-- Full Body Avatar Card -->
+                    <!-- Whole-Body Avatar Card -->
                     <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col items-center gap-4 relative floating">
                         ${renderFullBodyAvatar()}
                         <div class="text-center mt-1">
@@ -656,7 +668,7 @@
           hat_crown: "👑",
           hat_cap: "🧢",
           hat_wizard: "🧙‍♂️",
-          glasses_cool: "🕶️️",
+          glasses_cool: "🕶️",
           glasses_nerd: "👓",
           outfit_hero: "🦸‍♂️",
           outfit_dino: "🦖",

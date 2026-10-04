@@ -199,10 +199,7 @@ def equip_avatar(data: EquipItem):
     if not profile:
         raise HTTPException(status_code=404, detail="Profile not found")
     config = json.loads(profile["avatar_config"])
-    if data.item_id == "":
-        config.pop(data.slot, None)
-    else:
-        config[data.slot] = data.item_id
+    config[data.slot] = data.item_id
     cursor.execute("UPDATE profile SET avatar_config = ? WHERE id = ?", (json.dumps(config), data.profile_id))
     conn.commit()
     conn.close()
