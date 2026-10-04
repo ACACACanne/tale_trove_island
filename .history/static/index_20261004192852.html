@@ -11,8 +11,6 @@
       href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Verdana&display=swap"
       rel="stylesheet"
     />
-    <!-- External Stylesheet -->
-    <link rel="stylesheet" href="/static/style.css" />
     <script>
       tailwind.config = {
         theme: {
@@ -25,6 +23,29 @@
         },
       };
     </script>
+    <style>
+      .bounce-hover:hover {
+        transform: scale(1.03);
+        transition: transform 0.2s ease;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      .floating {
+        animation: float 3s ease-in-out infinite;
+      }
+      .dyslexia-spacing {
+        letter-spacing: 0.08em;
+        word-spacing: 0.15em;
+        line-height: 1.8;
+      }
+    </style>
   </head>
   <body
     id="body-root"
