@@ -5,7 +5,7 @@ function getItemEmoji(itemId) {
     hat_wizard: "🧙‍♂️",
     glasses_cool: "🕶️",
     glasses_nerd: "👓",
-    outfit_hero: "🦸‍♂️",
+    outfit_hero: "🦸‍♂️️",
     outfit_dino: "🦖",
     pet_bunny: "🐰",
     pet_dragon: "🐉",
@@ -151,7 +151,7 @@ function renderLandingScreen() {
       : "US Common Core 🇺🇸";
   return `
         <div class="flex flex-col items-center text-center gap-6 sm:gap-8 w-full max-w-xl sm:max-w-2xl p-5 sm:p-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl sm:rounded-3xl shadow-2xl animate-fadeIn">
-            <div class="text-6xl sm:text-7xl floating">🏝️✨</div>
+            <div class="text-6xl sm:text-7xl floating">🏝️️✨</div>
             <h2 class="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-yellow-300 via-pink-300 to-teal-300 bg-clip-text text-transparent">Welcome, ${state.profile.name}!</h2>
             
             <p class="text-base sm:text-xl text-white/90 leading-relaxed font-semibold">
@@ -213,22 +213,6 @@ function renderDashboard() {
                     </div>
                 </button>
 
-                <button onclick="openCurriculumSubject('writing')" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-pink-300 text-left">
-                    <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">✍️</span>
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold">Writing Studio</h3>
-                        <p class="text-pink-100 text-xs sm:text-sm">Story Creator & Prompts</p>
-                    </div>
-                </button>
-
-                <button onclick="openCurriculumSubject('history')" class="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-amber-300 text-left">
-                    <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">🏛️</span>
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold">History & Geography</h3>
-                        <p class="text-amber-100 text-xs sm:text-sm">Civilizations & Mapping</p>
-                    </div>
-                </button>
-
                 <button onclick="openCurriculumSubject('science')" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-cyan-300 text-left">
                     <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">🔬</span>
                     <div>
@@ -237,18 +221,29 @@ function renderDashboard() {
                     </div>
                 </button>
 
-                <button onclick="openCurriculumSubject('art')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-purple-300 text-left">
-                    <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">🎨</span>
+                <button onclick="openCurriculumSubject('humanities')" class="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-amber-300 text-left">
+                    <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">🏛️</span>
                     <div>
-                        <h3 class="text-xl sm:text-2xl font-bold">Art & Design</h3>
-                        <p class="text-purple-100 text-xs sm:text-sm">Color theory & Masterpieces</p>
+                        <h3 class="text-xl sm:text-2xl font-bold">History & Geography</h3>
+                        <p class="text-amber-100 text-xs sm:text-sm">Ancient Civilizations, Mapping</p>
                     </div>
                 </button>
-            </div>
 
-            <div class="flex gap-4 w-full max-w-2xl justify-center">
-                <button onclick="setView('wardrobe')" class="bg-white/20 hover:bg-white/30 px-5 py-3 rounded-2xl font-bold text-sm shadow flex items-center gap-2">👕 Avatar Wardrobe</button>
-                <button onclick="setView('world')" class="bg-white/20 hover:bg-white/30 px-5 py-3 rounded-2xl font-bold text-sm shadow flex items-center gap-2">🏝️ World Builder</button>
+                <button onclick="setView('stories')" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-pink-300 text-left">
+                    <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">✍️</span>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold">Writing Studio</h3>
+                        <p class="text-pink-100 text-xs sm:text-sm">Magical Story Creator</p>
+                    </div>
+                </button>
+
+                <button onclick="setView('wardrobe')" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-purple-300 text-left">
+                    <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">👕</span>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold">Avatar Wardrobe</h3>
+                        <p class="text-purple-100 text-xs sm:text-sm">Dress up with your ⭐ stars!</p>
+                    </div>
+                </button>
             </div>
 
             <button onclick="openSettingsModal()" class="text-xs sm:text-sm text-white/70 hover:text-white underline cursor-pointer">
@@ -259,10 +254,6 @@ function renderDashboard() {
 }
 
 function openCurriculumSubject(subject) {
-  if (subject === "writing") {
-    setView("stories");
-    return;
-  }
   state.curriculum.activeSubject = subject;
   setView("curriculum_topics");
 }
@@ -302,9 +293,8 @@ function renderCurriculumTopicsScreen() {
     topics = [
       { id: "biology", name: "Living Things & Habitats", icon: "🌿" },
       { id: "chemistry", name: "States of Matter & Materials", icon: "⚗️" },
-      { id: "physics", name: "Forces, Magnets & Light", icon: "⚡" },
     ];
-  } else if (subj === "history") {
+  } else if (subj === "humanities") {
     subjectTitle = "History & Geography (Year " + yg + ")";
     topics = [
       {
@@ -314,16 +304,7 @@ function renderCurriculumTopicsScreen() {
           : "World History & American Eras",
         icon: "👑",
       },
-      { id: "geography", name: "Continents, Oceans & Mapping", icon: "🗺️" },
-    ];
-  } else if (subj === "art") {
-    subjectTitle = "Art & Design (Year " + yg + ")";
-    topics = [
-      {
-        id: "art_theory",
-        name: "Color Theory, Patterns & Famous Artists",
-        icon: "🎨",
-      },
+      { id: "geography", name: "Continents, Oceans & Mapping", icon: "🗺️️" },
     ];
   }
 
@@ -331,7 +312,7 @@ function renderCurriculumTopicsScreen() {
         <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-2xl max-w-xl sm:max-w-2xl w-full flex flex-col gap-5 animate-fadeIn text-center">
             <div class="flex justify-between items-center">
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-yellow-300">${subjectTitle}</h2>
-                <button onclick="setView('dashboard')" class="bg-white/20 hover:bg-white/30 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold">⬅️ Dashboard</button>
+                <button onclick="setView('dashboard')" class="bg-white/20 hover:bg-white/30 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold">⬅️️ Dashboard</button>
             </div>
 
             <p class="text-white/80 text-xs sm:text-sm">Select a topic aligned with Year ${yg} requirements. Choose Standard or Harder Challenge mode!</p>
@@ -438,17 +419,6 @@ function startGeneralCurriculumQuiz(topicId) {
         answer: 2,
       },
     ];
-  } else if (topicId === "physics") {
-    questions = [
-      {
-        q: `Which force pulls objects down to Earth? (1: Gravity, 2: Magnetism)`,
-        answer: 1,
-      },
-      {
-        q: `What travels faster: light or sound? (1: Light, 2: Sound)`,
-        answer: 1,
-      },
-    ];
   } else if (topicId === "history") {
     questions = [
       {
@@ -466,17 +436,6 @@ function startGeneralCurriculumQuiz(topicId) {
       {
         q: `Which is the largest ocean on Earth? (1: Atlantic, 2: Pacific)`,
         answer: 2,
-      },
-    ];
-  } else if (topicId === "art_theory") {
-    questions = [
-      {
-        q: `Which of these are primary colors? (1: Red/Blue/Yellow, 2: Pink/Black/White)`,
-        answer: 1,
-      },
-      {
-        q: `What do you get when you mix blue and yellow? (1: Green, 2: Orange)`,
-        answer: 1,
       },
     ];
   }
@@ -837,7 +796,7 @@ function renderChallengeScreen() {
             <span class="text-5xl sm:text-6xl animate-bounce">⚡</span>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-amber-300">Speed Challenge Mode</h2>
             <p class="text-white/80 text-xs sm:text-sm">Answer 10 rapid-fire questions as fast as you can to earn double Star Points!</p>
-            <button onclick="beginPractice('hard', 10)" class="bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 font-extrabold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl hover:scale-105 transition text-sm sm:text-base">Start Speed Challenge! 🔥</button>
+            <button onclick="beginPractice('hard', 10)" class="bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 font-extrabold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl hover:scale-105 transition text-base sm:text-xl">Start Speed Challenge! 🔥</button>
             <button onclick="setView('dashboard')" class="text-white/70 hover:text-white text-xs sm:text-sm">⬅️ Back to Dashboard</button>
         </div>
     `;

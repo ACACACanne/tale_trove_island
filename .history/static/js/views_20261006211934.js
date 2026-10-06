@@ -30,25 +30,18 @@ function renderFullBodyAvatar(containerClass = "w-40 h-56 sm:w-48 sm:h-64") {
 
   return `
         <div class="${containerClass} bg-gradient-to-b from-indigo-900 via-purple-900 to-slate-900 rounded-3xl flex flex-col items-center justify-between p-4 shadow-2xl border-4 border-white/30 relative overflow-visible">
-            <!-- Top Hat Slot -->
             <div class="h-10 flex items-center justify-center text-4xl sm:text-5xl z-30 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 ${getEquippedEmoji("hat")}
             </div>
-
-            <!-- Head & Glasses Center Zone -->
             <div class="relative flex flex-col items-center justify-center my-auto">
                 <div class="text-6xl sm:text-7xl select-none z-10 filter drop-shadow-md">${getBaseAvatar()}</div>
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-3xl z-20 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                     ${getEquippedEmoji("glasses")}
                 </div>
             </div>
-
-            <!-- Torso / Outfit Zone -->
             <div class="h-12 flex items-center justify-center text-3xl sm:text-4xl z-20 drop-shadow-md bg-white/10 backdrop-blur-sm px-4 py-1 rounded-2xl border border-white/20">
                 ${outfitEmoji || '<span class="text-[10px] text-white/40 font-semibold tracking-wider">NO OUTFIT</span>'}
             </div>
-
-            <!-- Pet Companion Corner Badge -->
             ${
               petId
                 ? `
@@ -68,7 +61,6 @@ function renderProfileSelectScreen() {
             <span class="text-5xl sm:text-6xl floating">🎒✨</span>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-yellow-300">Who is playing today?</h2>
             <p class="text-white/80 text-xs sm:text-sm">Select your name or create a new profile to track your stars and stories!</p>
-
             <div class="grid grid-cols-1 gap-2.5 sm:gap-3 max-h-56 sm:max-h-60 overflow-y-auto pr-1">
                 ${state.profiles
                   .map(
@@ -87,7 +79,6 @@ function renderProfileSelectScreen() {
                   )
                   .join("")}
             </div>
-
             <button onclick="createNewProfilePrompt()" class="bg-gradient-to-r from-teal-500 to-cyan-500 hover:scale-105 text-white font-extrabold py-3.5 sm:py-4 px-4 rounded-xl sm:rounded-2xl shadow-xl transition text-base sm:text-lg mt-1">
                 + Create New Classmate Profile 🌟
             </button>
@@ -104,40 +95,27 @@ function openSendSettings() {
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-yellow-300">🧠 SEND & Accessibility</h2>
                 <button onclick="setView('dashboard')" class="bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-bold">⬅️ Back</button>
             </div>
-
             <div class="flex flex-col gap-4 text-left">
                 <div class="bg-black/20 p-3.5 sm:p-4 rounded-2xl border border-white/10">
                     <label class="block font-bold text-sm sm:text-base text-teal-300 mb-2">Curriculum Standards & Spelling</label>
                     <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
-                        <button onclick="saveSendPref('dialect', 'UK')" class="p-2.5 sm:p-3 rounded-xl font-bold text-xs sm:text-sm border-2 ${p.dialect === "UK" ? "bg-teal-600 border-teal-300 shadow-lg" : "bg-white/10 border-white/20"}">
-                            🇬🇧 UK National Curriculum
-                        </button>
-                        <button onclick="saveSendPref('dialect', 'US')" class="p-2.5 sm:p-3 rounded-xl font-bold text-xs sm:text-sm border-2 ${p.dialect === "US" ? "bg-teal-600 border-teal-300 shadow-lg" : "bg-white/10 border-white/20"}">
-                            🇺🇸 US Common Core
-                        </button>
+                        <button onclick="saveSendPref('dialect', 'UK')" class="p-2.5 sm:p-3 rounded-xl font-bold text-xs sm:text-sm border-2 ${p.dialect === "UK" ? "bg-teal-600 border-teal-300 shadow-lg" : "bg-white/10 border-white/20"}">🇬🇧 UK National Curriculum</button>
+                        <button onclick="saveSendPref('dialect', 'US')" class="p-2.5 sm:p-3 rounded-xl font-bold text-xs sm:text-sm border-2 ${p.dialect === "US" ? "bg-teal-600 border-teal-300 shadow-lg" : "bg-white/10 border-white/20"}">🇺🇸 US Common Core</button>
                     </div>
                 </div>
-
                 <div class="bg-black/20 p-3.5 sm:p-4 rounded-2xl border border-white/10">
                     <label class="block font-bold text-sm sm:text-base text-pink-300 mb-2">Sensory Theme (Autism / ADHD Friendly)</label>
                     <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
-                        <button onclick="saveSendPref('theme_mode', 'pastel')" class="p-2.5 sm:p-3 rounded-xl font-bold text-xs sm:text-sm border-2 ${p.theme_mode === "pastel" ? "bg-pink-600 border-pink-300 shadow-lg" : "bg-white/10 border-white/20"}">
-                            🌿 Cozy Pastel
-                        </button>
-                        <button onclick="saveSendPref('theme_mode', 'vibrant')" class="p-2.5 sm:p-3 rounded-xl font-bold text-xs sm:text-sm border-2 ${p.theme_mode === "vibrant" ? "bg-pink-600 border-pink-300 shadow-lg" : "bg-white/10 border-white/20"}">
-                            ✨ Vibrant Neon
-                        </button>
+                        <button onclick="saveSendPref('theme_mode', 'pastel')" class="p-2.5 sm:p-3 rounded-xl font-bold text-xs sm:text-sm border-2 ${p.theme_mode === "pastel" ? "bg-pink-600 border-pink-300 shadow-lg" : "bg-white/10 border-white/20"}">🌿 Cozy Pastel</button>
+                        <button onclick="saveSendPref('theme_mode', 'vibrant')" class="p-2.5 sm:p-3 rounded-xl font-bold text-xs sm:text-sm border-2 ${p.theme_mode === "vibrant" ? "bg-pink-600 border-pink-300 shadow-lg" : "bg-white/10 border-white/20"}">✨ Vibrant Neon</button>
                     </div>
                 </div>
-
                 <div class="bg-black/20 p-3.5 sm:p-4 rounded-2xl border border-white/10 flex justify-between items-center gap-3">
                     <div class="text-left">
                         <h4 class="font-bold text-sm sm:text-base text-yellow-300">Dyslexia-Friendly Font & Spacing</h4>
                         <p class="text-[11px] sm:text-xs text-white/70">Increases letter spacing and legibility.</p>
                     </div>
-                    <button onclick="saveSendPref('dyslexia_font', ${!p.dyslexia_font})" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm shrink-0 ${p.dyslexia_font ? "bg-emerald-600 text-white" : "bg-white/20 text-white/70"}">
-                        ${p.dyslexia_font ? "ENABLED ✓" : "DISABLED"}
-                    </button>
+                    <button onclick="saveSendPref('dyslexia_font', ${!p.dyslexia_font})" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm shrink-0 ${p.dyslexia_font ? "bg-emerald-600 text-white" : "bg-white/20 text-white/70"}">${p.dyslexia_font ? "ENABLED ✓" : "DISABLED"}</button>
                 </div>
             </div>
         </div>
@@ -153,22 +131,15 @@ function renderLandingScreen() {
         <div class="flex flex-col items-center text-center gap-6 sm:gap-8 w-full max-w-xl sm:max-w-2xl p-5 sm:p-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl sm:rounded-3xl shadow-2xl animate-fadeIn">
             <div class="text-6xl sm:text-7xl floating">🏝️✨</div>
             <h2 class="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-yellow-300 via-pink-300 to-teal-300 bg-clip-text text-transparent">Welcome, ${state.profile.name}!</h2>
-            
             <p class="text-base sm:text-xl text-white/90 leading-relaxed font-semibold">
                 Are you ready for Tale Trove Island where <span class="text-yellow-300">math turns to treasure, reading unlocks magic, and every subject sparks an adventure?</span>
             </p>
-
             <div class="bg-black/20 px-3.5 sm:px-4 py-2 rounded-xl border border-white/10 text-xs text-teal-300 font-semibold">
                 👤 Active Profile: ${state.profile.name} (Year ${state.profile.year_group}) • ${standardLabel}
             </div>
-
             <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                <button onclick="setView('dashboard')" class="bg-gradient-to-r from-yellow-400 via-pink-500 to-teal-400 hover:scale-105 text-gray-900 font-extrabold text-base sm:text-lg py-3.5 sm:py-4 px-8 rounded-full shadow-2xl transition transform active:scale-95 border-2 border-white/40">
-                    Start Adventure! 🚀
-                </button>
-                <button onclick="goToProfiles()" class="bg-white/20 hover:bg-white/30 font-bold py-3.5 sm:py-4 px-6 rounded-full shadow-lg transition text-sm sm:text-base">
-                    Switch Profile
-                </button>
+                <button onclick="setView('dashboard')" class="bg-gradient-to-r from-yellow-400 via-pink-500 to-teal-400 hover:scale-105 text-gray-900 font-extrabold text-base sm:text-lg py-3.5 sm:py-4 px-8 rounded-full shadow-2xl transition transform active:scale-95 border-2 border-white/40">Start Adventure! 🚀</button>
+                <button onclick="goToProfiles()" class="bg-white/20 hover:bg-white/30 font-bold py-3.5 sm:py-4 px-6 rounded-full shadow-lg transition text-sm sm:text-base">Switch Profile</button>
             </div>
         </div>
     `;
@@ -186,16 +157,12 @@ function renderDashboard() {
                 </div>
                 <button onclick="goToProfiles()" class="bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-xl text-xs font-bold">👤 Switch</button>
             </div>
-
-            <!-- Full Body Avatar Card -->
             <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col items-center gap-4 relative floating">
                 ${renderFullBodyAvatar()}
                 <div class="text-center mt-1">
                     <span class="bg-white/20 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">School Year ${p.year_group} Explorer (${p.dialect})</span>
                 </div>
             </div>
-
-            <!-- Curriculum Subject Hub Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-2xl">
                 <button onclick="openCurriculumSubject('math')" class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-emerald-300 text-left">
                     <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">📐</span>
@@ -204,7 +171,6 @@ function renderDashboard() {
                         <p class="text-emerald-100 text-xs sm:text-sm">Timetables, Division & Fractions</p>
                     </div>
                 </button>
-
                 <button onclick="openCurriculumSubject('english')" class="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-400 hover:to-cyan-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-teal-300 text-left">
                     <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">📚</span>
                     <div>
@@ -212,7 +178,6 @@ function renderDashboard() {
                         <p class="text-teal-100 text-xs sm:text-sm">Phonics, Grammar & Vocabulary</p>
                     </div>
                 </button>
-
                 <button onclick="openCurriculumSubject('writing')" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-pink-300 text-left">
                     <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">✍️</span>
                     <div>
@@ -220,7 +185,6 @@ function renderDashboard() {
                         <p class="text-pink-100 text-xs sm:text-sm">Story Creator & Prompts</p>
                     </div>
                 </button>
-
                 <button onclick="openCurriculumSubject('history')" class="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-amber-300 text-left">
                     <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">🏛️</span>
                     <div>
@@ -228,7 +192,6 @@ function renderDashboard() {
                         <p class="text-amber-100 text-xs sm:text-sm">Civilizations & Mapping</p>
                     </div>
                 </button>
-
                 <button onclick="openCurriculumSubject('science')" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-cyan-300 text-left">
                     <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">🔬</span>
                     <div>
@@ -236,7 +199,6 @@ function renderDashboard() {
                         <p class="text-cyan-100 text-xs sm:text-sm">Living things, States of Matter</p>
                     </div>
                 </button>
-
                 <button onclick="openCurriculumSubject('art')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex items-center gap-4 sm:gap-5 bounce-hover border-2 border-purple-300 text-left">
                     <span class="text-4xl sm:text-5xl bg-white/20 p-3 sm:p-4 rounded-2xl shrink-0">🎨</span>
                     <div>
@@ -245,15 +207,11 @@ function renderDashboard() {
                     </div>
                 </button>
             </div>
-
             <div class="flex gap-4 w-full max-w-2xl justify-center">
                 <button onclick="setView('wardrobe')" class="bg-white/20 hover:bg-white/30 px-5 py-3 rounded-2xl font-bold text-sm shadow flex items-center gap-2">👕 Avatar Wardrobe</button>
                 <button onclick="setView('world')" class="bg-white/20 hover:bg-white/30 px-5 py-3 rounded-2xl font-bold text-sm shadow flex items-center gap-2">🏝️ World Builder</button>
             </div>
-
-            <button onclick="openSettingsModal()" class="text-xs sm:text-sm text-white/70 hover:text-white underline cursor-pointer">
-                ⚙️ Update Name / School Year / Curriculum Standards
-            </button>
+            <button onclick="openSettingsModal()" class="text-xs sm:text-sm text-white/70 hover:text-white underline cursor-pointer">⚙️ Update Name / School Year / Curriculum Standards</button>
         </div>
     `;
 }
@@ -333,20 +291,12 @@ function renderCurriculumTopicsScreen() {
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-yellow-300">${subjectTitle}</h2>
                 <button onclick="setView('dashboard')" class="bg-white/20 hover:bg-white/30 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold">⬅️ Dashboard</button>
             </div>
-
             <p class="text-white/80 text-xs sm:text-sm">Select a topic aligned with Year ${yg} requirements. Choose Standard or Harder Challenge mode!</p>
-
-            <!-- Difficulty Switcher -->
             <div class="flex justify-center gap-3 bg-black/20 p-3 rounded-2xl border border-white/10">
                 <span class="text-xs font-bold text-yellow-200 self-center">Difficulty:</span>
-                <button onclick="setCurriculumDifficulty('standard')" class="px-4 py-2 rounded-xl font-bold text-xs sm:text-sm border-2 ${state.curriculum.difficulty === "standard" ? "bg-emerald-600 border-emerald-300 shadow-lg" : "bg-white/10 border-white/20"}">
-                    ⭐ Standard Year ${yg}
-                </button>
-                <button onclick="setCurriculumDifficulty('harder')" class="px-4 py-2 rounded-xl font-bold text-xs sm:text-sm border-2 ${state.curriculum.difficulty === "harder" ? "bg-purple-600 border-purple-300 shadow-lg" : "bg-white/10 border-white/20"}">
-                    🔥 Harder Challenge (+2x Stars)
-                </button>
+                <button onclick="setCurriculumDifficulty('standard')" class="px-4 py-2 rounded-xl font-bold text-xs sm:text-sm border-2 ${state.curriculum.difficulty === "standard" ? "bg-emerald-600 border-emerald-300 shadow-lg" : "bg-white/10 border-white/20"}">⭐ Standard Year ${yg}</button>
+                <button onclick="setCurriculumDifficulty('harder')" class="px-4 py-2 rounded-xl font-bold text-xs sm:text-sm border-2 ${state.curriculum.difficulty === "harder" ? "bg-purple-600 border-purple-300 shadow-lg" : "bg-white/10 border-white/20"}">🔥 Harder Challenge (+2x Stars)</button>
             </div>
-
             <div class="grid grid-cols-1 gap-3">
                 ${topics
                   .map(
@@ -369,265 +319,6 @@ function renderCurriculumTopicsScreen() {
     `;
 }
 
-function setCurriculumDifficulty(diff) {
-  state.curriculum.difficulty = diff;
-  renderView();
-}
-
-function launchCurriculumTopic(topicId) {
-  state.curriculum.activeTopic = topicId;
-  if (topicId === "timetables") {
-    startPracticeSetup();
-  } else if (topicId === "spelling") {
-    startWordGame();
-  } else {
-    startGeneralCurriculumQuiz(topicId);
-  }
-}
-
-function startGeneralCurriculumQuiz(topicId) {
-  const yg = state.profile.year_group;
-  let questions = [];
-  const isHarder = state.curriculum.difficulty === "harder";
-
-  if (topicId === "division") {
-    for (let i = 0; i < 10; i++) {
-      const b = Math.floor(Math.random() * (isHarder ? 12 : 6)) + 2;
-      const multiplier = Math.floor(Math.random() * 10) + 1;
-      const a = b * multiplier;
-      questions.push({ q: `${a} ÷ ${b} = ?`, answer: multiplier });
-    }
-  } else if (topicId === "fractions") {
-    questions = [
-      { q: `What is 1/2 of ${yg * 10}?`, answer: (yg * 10) / 2 },
-      { q: `What is 1/4 of ${yg * 20}?`, answer: (yg * 20) / 4 },
-      { q: `What is 3/4 of 20?`, answer: 15 },
-      {
-        q: `Which is bigger: 1/2 or 1/4? (Enter 2 for half, 4 for quarter)`,
-        answer: 2,
-      },
-      { q: `What is 0.5 expressed as a percentage? (%)`, answer: 50 },
-    ];
-  } else if (topicId === "biology") {
-    questions = [
-      {
-        q: `What do plants need for photosynthesis? (Type 1 for Sunlight, 2 for Darkness)`,
-        answer: 1,
-      },
-      {
-        q: `Which animal is a mammal? (1: Frog, 2: Dolphin, 3: Shark)`,
-        answer: 2,
-      },
-      {
-        q: `What part of a plant absorbs water from soil? (1: Roots, 2: Leaves)`,
-        answer: 1,
-      },
-    ];
-  } else if (topicId === "chemistry") {
-    questions = [
-      {
-        q: `What is water in its solid state called? (1: Ice, 2: Steam)`,
-        answer: 1,
-      },
-      {
-        q: `Is glass a solid, liquid, or gas? (Enter 1 for Solid, 2 for Liquid)`,
-        answer: 1,
-      },
-      {
-        q: `What state of matter is air? (Enter 1 for Solid, 2 for Gas)`,
-        answer: 2,
-      },
-    ];
-  } else if (topicId === "physics") {
-    questions = [
-      {
-        q: `Which force pulls objects down to Earth? (1: Gravity, 2: Magnetism)`,
-        answer: 1,
-      },
-      {
-        q: `What travels faster: light or sound? (1: Light, 2: Sound)`,
-        answer: 1,
-      },
-    ];
-  } else if (topicId === "history") {
-    questions = [
-      {
-        q: `Who built the pyramids? (1: Ancient Romans, 2: Ancient Egyptians)`,
-        answer: 2,
-      },
-      {
-        q: `Which historical era came first? (1: Stone Age, 2: Victorian Era)`,
-        answer: 1,
-      },
-    ];
-  } else if (topicId === "geography") {
-    questions = [
-      { q: `How many continents are there on Earth?`, answer: 7 },
-      {
-        q: `Which is the largest ocean on Earth? (1: Atlantic, 2: Pacific)`,
-        answer: 2,
-      },
-    ];
-  } else if (topicId === "art_theory") {
-    questions = [
-      {
-        q: `Which of these are primary colors? (1: Red/Blue/Yellow, 2: Pink/Black/White)`,
-        answer: 1,
-      },
-      {
-        q: `What do you get when you mix blue and yellow? (1: Green, 2: Orange)`,
-        answer: 1,
-      },
-    ];
-  }
-
-  state.practice.questions = questions.map((item) => ({
-    text: item.q,
-    answer: item.answer,
-    a: item.q,
-    b: "",
-    isQuiz: true,
-  }));
-  state.practice.currentIndex = 0;
-  state.practice.correctCount = 0;
-  state.practice.session_length = questions.length;
-  state.practice.level = isHarder ? "hard" : "medium";
-  state.practice.timer = isHarder ? 12 : 25;
-  state.view = "practice";
-  renderView();
-}
-
-function renderPracticeScreen() {
-  const pr = state.practice;
-  if (pr.currentIndex >= pr.questions.length) {
-    finishPracticeSession();
-    return `<div class="text-center"><h2 class="text-2xl sm:text-3xl font-bold text-yellow-300 animate-bounce">🎉 Amazing Job! Saving your stars...</h2></div>`;
-  }
-
-  const q = pr.questions[pr.currentIndex];
-  const isQuiz = q.isQuiz;
-
-  return `
-        <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-2xl max-w-md sm:max-w-xl w-full flex flex-col items-center gap-5 relative">
-            <div class="w-full flex justify-between items-center text-xs sm:text-sm font-semibold text-white/80">
-                <span>Question ${pr.currentIndex + 1} / ${pr.session_length}</span>
-                <div class="flex items-center gap-2">
-                    <button onclick="speakText('${isQuiz ? q.text : q.a + " times " + q.b}')" class="bg-white/20 hover:bg-white/30 px-2 py-1 rounded-full text-xs" title="Read Aloud (TTS)">🔊 Listen</button>
-                    ${pr.level !== "easy" ? `<div class="bg-red-500/20 border border-red-400 px-2.5 py-0.5 rounded-full text-red-300 flex items-center gap-1 text-xs">⏱️ <span id="timer-display">${pr.timer}</span>s</div>` : ""}
-                </div>
-            </div>
-
-            <div class="bg-white/25 border-4 border-white/40 px-6 sm:px-10 py-6 sm:py-8 rounded-2xl sm:rounded-3xl shadow-2xl text-center w-full">
-                <span class="text-2xl sm:text-4xl font-extrabold tracking-wide text-yellow-200">${isQuiz ? q.text : q.a + " × " + q.b + " = ?"}</span>
-            </div>
-
-            <div id="options-grid" class="grid grid-cols-2 gap-3 sm:gap-4 w-full">
-                ${generateOptions(q.answer)
-                  .map(
-                    (opt) => `
-                    <button onclick="submitAnswer(${opt},${q.answer})" class="bg-white/20 hover:bg-white/30 border-2 border-white/30 p-4 sm:p-5 rounded-xl sm:rounded-2xl text-2xl sm:text-3xl font-bold shadow-lg transition transform active:scale-95">${opt}</button>
-                `,
-                  )
-                  .join("")}
-            </div>
-
-            <div id="gentle-modal" class="hidden absolute inset-0 bg-black/70 backdrop-blur-sm rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center p-5 text-center animate-fadeIn">
-                <span class="text-4xl sm:text-5xl mb-2">🐱</span>
-                <h3 class="text-xl sm:text-2xl font-bold text-yellow-300">Need a little extra time, superstar?</h3>
-                <p class="text-white/80 text-xs sm:text-sm mt-1 mb-5">Take all the time you need! No rush here.</p>
-                <button onclick="addExtraTime()" class="bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 font-extrabold px-5 py-2.5 sm:px-6 sm:py-3 rounded-full shadow-lg hover:scale-105 transition text-sm sm:text-base">Yes, give me +10 seconds! ⏰</button>
-            </div>
-        </div>
-    `;
-}
-
-function generateOptions(correct) {
-  let opts = [correct];
-  while (opts.length < 4) {
-    let offset =
-      (Math.random() < 0.5 ? 1 : -1) * (Math.floor(Math.random() * 5) + 1);
-    let wrong = correct + offset;
-    if (wrong >= 0 && !opts.includes(wrong)) {
-      opts.push(wrong);
-    }
-  }
-  return opts.sort(() => Math.random() - 0.5);
-}
-
-function renderWordGameScreen() {
-  const wg = state.wordGame;
-  const wordList = state.profile.dialect === "UK" ? wg.wordsUK : wg.wordsUS;
-
-  if (wg.currentIndex >= wordList.length) {
-    return `<div class="text-center"><h2 class="text-2xl sm:text-3xl font-bold text-yellow-300 animate-bounce">🎉 All Pets Rescued! Saving your stars...</h2></div>`;
-  }
-
-  let displayWordHTML = "";
-  let wordComplete = true;
-  for (let char of wg.activeWord) {
-    if (wg.guessedLetters.includes(char)) {
-      displayWordHTML += `<span class="w-10 h-12 sm:w-12 sm:h-14 bg-white/25 border-2 border-yellow-300 rounded-xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-yellow-300 shadow">${char}</span>`;
-    } else {
-      displayWordHTML += `<span class="w-10 h-12 sm:w-12 sm:h-14 bg-white/10 border-2 border-white/30 rounded-xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white/50 shadow">_</span>`;
-      wordComplete = false;
-    }
-  }
-
-  if (wordComplete) {
-    playSound("correct");
-    wg.correctCount++;
-    wg.currentIndex++;
-    setTimeout(() => {
-      loadNextWordGameRound();
-      renderView();
-    }, 1000);
-    return `
-            <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-2xl max-w-md sm:max-w-lg w-full text-center flex flex-col gap-5 animate-fadeIn">
-                <span class="text-6xl sm:text-7xl animate-bounce">🎉📦🔓</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-yellow-300">You Let the ${wg.currentPet} Out of the Box!</h2>
-                <p class="text-emerald-300 font-bold text-lg sm:text-xl">+10 ⭐ Star Points Earned!</p>
-            </div>
-        `;
-  }
-
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
-  return `
-        <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-2xl max-w-md sm:max-w-xl w-full flex flex-col items-center gap-5 relative">
-            <div class="w-full flex justify-between items-center text-xs sm:text-sm font-semibold text-white/80">
-                <span>Word Rescue (${state.profile.dialect}) ${wg.currentIndex + 1} / ${wordList.length}</span>
-                <button onclick="speakText('${wg.hint}')" class="bg-white/20 hover:bg-white/30 px-2.5 py-1 rounded-full text-xs">🔊 Read Hint</button>
-            </div>
-
-            <div class="relative bg-gradient-to-tr from-amber-800 to-amber-600 border-4 border-amber-400 w-32 h-32 sm:w-36 sm:h-36 rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl floating">
-                <div class="text-5xl sm:text-6xl">${wg.currentPet}</div>
-                <div class="absolute -top-3 bg-yellow-400 text-gray-900 px-2.5 sm:px-3 py-0.5 rounded-full text-[10px] sm:text-xs font-bold shadow">Locked Box 📦</div>
-            </div>
-
-            <p class="text-yellow-200 font-semibold text-sm sm:text-lg text-center px-2">Hint: ${wg.hint}</p>
-
-            <div class="flex gap-1.5 sm:gap-2 justify-center my-1 flex-wrap">
-                ${displayWordHTML}
-            </div>
-
-            <div class="grid grid-cols-7 gap-1.5 sm:gap-2 w-full mt-1">
-                ${alphabet
-                  .map((letter) => {
-                    const guessed = wg.guessedLetters.includes(letter);
-                    return `
-                        <button onclick="guessLetter('${letter}')" ${guessed ? 'disabled class="bg-gray-700/50 text-gray-400 cursor-not-allowed text-xs sm:text-lg p-2 sm:p-3 rounded-lg sm:rounded-xl"' : 'class="bg-white/20 hover:bg-white/30 border border-white/30 p-2 sm:p-3 rounded-lg sm:rounded-xl font-bold text-xs sm:text-lg shadow active:scale-95 transition"'} >
-                            ${letter}
-                        </button>
-                    `;
-                  })
-                  .join("")}
-            </div>
-
-            <button onclick="setView('dashboard')" class="text-white/60 hover:text-white text-xs sm:text-sm mt-1">⬅️ Back to Dashboard</button>
-        </div>
-    `;
-}
-
 function renderStoriesScreen() {
   const dialectBadge =
     state.profile.dialect === "UK"
@@ -645,7 +336,6 @@ function renderStoriesScreen() {
                     <button onclick="setView('dashboard')" class="bg-white/20 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold hover:bg-white/30">⬅️ Back</button>
                 </div>
             </div>
-
             <div class="flex flex-col gap-3.5 sm:gap-4 max-h-80 sm:max-h-96 overflow-y-auto pr-1">
                 ${
                   state.stories.length === 0
@@ -684,13 +374,11 @@ function renderStoryWriterScreen() {
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-pink-300">✍️ Story Writing Studio</h2>
                 <button onclick="setView('stories')" class="bg-white/20 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold hover:bg-white/30">⬅️ Cancel</button>
             </div>
-
             <div class="flex flex-col gap-3.5 sm:gap-4 text-left">
                 <div>
                     <label class="block text-xs sm:text-sm font-bold text-white/80 mb-1">Story Title 📜</label>
                     <input id="story-title-input" type="text" placeholder="e.g. The Brilliant Bunny Journey" class="w-full bg-white/20 border border-white/30 rounded-xl sm:rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-white/50 focus:outline-none focus:border-pink-400 font-semibold" />
                 </div>
-
                 <div>
                     <label class="block text-xs sm:text-sm font-bold text-white/80 mb-1">Choose Theme 🎨</label>
                     <select id="story-theme-input" class="w-full bg-indigo-950 border border-white/30 rounded-xl sm:rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white focus:outline-none focus:border-pink-400 font-semibold">
@@ -700,12 +388,10 @@ function renderStoryWriterScreen() {
                         <option value="Space Exploration">🚀 Space Exploration</option>
                     </select>
                 </div>
-
                 <div>
                     <label class="block text-xs sm:text-sm font-bold text-white/80 mb-1">Write Your Story 📝</label>
                     <textarea id="story-content-input" rows="5" placeholder="Once upon a time..." class="w-full bg-white/20 border border-white/30 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 text-sm sm:text-base text-white placeholder-white/50 focus:outline-none focus:border-pink-400"></textarea>
                 </div>
-
                 <button onclick="saveStoryAPI()" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white font-extrabold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl transition hover:scale-105 text-base sm:text-lg">Save Story & Earn +30 ⭐ Stars!</button>
             </div>
         </div>
@@ -721,10 +407,8 @@ function renderWardrobeScreen() {
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-pink-300">Avatar Wardrobe 👕</h2>
                 <button onclick="setView('dashboard')" class="bg-white/20 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold hover:bg-white/30">⬅️ Back</button>
             </div>
-
             <div class="flex flex-col items-center gap-3">
                 ${renderFullBodyAvatar("w-32 h-44 sm:w-36 sm:h-48")}
-                
                 <div class="flex flex-col items-center gap-1.5 w-full mt-2">
                     <span class="text-xs font-bold text-yellow-200">Choose Base Animal Character:</span>
                     <div class="flex gap-2 justify-center flex-wrap">
@@ -738,7 +422,6 @@ function renderWardrobeScreen() {
                     </div>
                 </div>
             </div>
-
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-h-72 sm:max-h-96 overflow-y-auto pr-1">
                 ${state.inventory
                   .map((item) => {
@@ -791,7 +474,6 @@ function renderWorldBuilderScreen() {
                     <button onclick="setView('dashboard')" class="bg-white/20 px-3.5 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-bold hover:bg-white/30">⬅️ Back</button>
                 </div>
             </div>
-
             <div class="flex flex-wrap gap-2 bg-white/10 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl justify-center items-center">
                 <span class="text-xs sm:text-sm font-bold w-full sm:w-auto text-center">Choose item to place:</span>
                 <button onclick="selectedWorldItem('tree')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-xl text-lg sm:text-xl">🌲 Tree</button>
@@ -799,7 +481,6 @@ function renderWorldBuilderScreen() {
                 <button onclick="selectedWorldItem('bunny')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-xl text-lg sm:text-xl">🐰 Bunny</button>
                 <button onclick="selectedWorldItem('flower')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-xl text-lg sm:text-xl">🌻 Flower</button>
             </div>
-
             <div id="world-grid" class="grid grid-cols-8 gap-1.5 sm:gap-2 bg-black/30 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-white/25 min-h-[280px] sm:min-h-[350px] overflow-x-auto">
                 ${renderGridCells()}
             </div>
@@ -837,7 +518,7 @@ function renderChallengeScreen() {
             <span class="text-5xl sm:text-6xl animate-bounce">⚡</span>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-amber-300">Speed Challenge Mode</h2>
             <p class="text-white/80 text-xs sm:text-sm">Answer 10 rapid-fire questions as fast as you can to earn double Star Points!</p>
-            <button onclick="beginPractice('hard', 10)" class="bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 font-extrabold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl hover:scale-105 transition text-sm sm:text-base">Start Speed Challenge! 🔥</button>
+            <button onclick="beginPractice('hard', 10)" class="bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 font-extrabold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl hover:scale-105 transition text-base sm:text-xl">Start Speed Challenge! 🔥</button>
             <button onclick="setView('dashboard')" class="text-white/70 hover:text-white text-xs sm:text-sm">⬅️ Back to Dashboard</button>
         </div>
     `;
