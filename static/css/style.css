@@ -1,0 +1,51 @@
+/* Tale Trove Island - Custom Styles & Animations & Mobile Responsiveness */
+
+.bounce-hover:hover {
+  transform: scale(1.03);
+  transition: transform 0.2s ease;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+.dyslexia-spacing {
+  letter-spacing: 0.08em;
+  word-spacing: 0.15em;
+  line-height: 1.8;
+}
+
+/* Touch-friendly enhancements for mobile and tablet devices */
+button,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* Custom scrollbars for mobile drawers and lists */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
