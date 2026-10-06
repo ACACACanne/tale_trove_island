@@ -19,7 +19,7 @@ let state = {
   curriculum: {
     activeSubject: "math",
     activeTopic: "timetables",
-    difficulty: "standard", // 'standard' or 'harder'
+    difficulty: "standard",
   },
   practice: {
     level: "medium",
